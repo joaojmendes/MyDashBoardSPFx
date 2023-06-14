@@ -33,8 +33,7 @@
     "date-fns-tz": "^2.0.0",
     "jotai": "^2.1.0",
     "markdown-it": "^13.0.1",
-    "mgt-adaptivecards": "^1.0.0",
-    "mgt-adaptivecards_alpha": "^0.1.13",
+  
     "office-ui-fabric-react": "^7.199.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
