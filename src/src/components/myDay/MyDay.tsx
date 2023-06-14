@@ -41,17 +41,23 @@ export const MyDay: React.FunctionComponent<IMyDayProps> = (props: React.PropsWi
       icon: <TasksApp />,
     },
   ];
+
+  const renderSelectedTab = React.useCallback(() => {
+    switch (selectedValue) {
+      case "tab1":
+        return  <MgtAgenda />;
+      case "tab2":
+        return <MgtTodo />     
+      default:
+        return null;
+    }
+  }, [selectedValue]);
   return (
     <>
       <div className={styles.myDayContainer}>
         <Subtitle2 className={styles.myDayTitle}>My Day</Subtitle2>
         <TabMenu tabs={tabs} selectedTabId={selectedValue} onSelectedTab={onTabSelect} />
-        {selectedValue === "tab1" && (
-          <>
-            <MgtAgenda />
-          </>
-        )}
-        {selectedValue === "tab2" && <MgtTodo />}
+        { renderSelectedTab()}
       </div>
     </>
   );
