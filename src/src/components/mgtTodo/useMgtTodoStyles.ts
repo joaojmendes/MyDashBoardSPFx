@@ -17,7 +17,7 @@ export const useMgtTodoStyles = makeStyles({
         position: "relative",
         width: "100%",
         overflowY: "auto",
-        height: "calc(100vh - 160px)",
+      /*   height: "calc(100vh - 160px)", */
         justifyContent: "start",
         textAlign: "center",
         "::-webkit-scrollbar-thumb": {
@@ -41,6 +41,6 @@ export const useMgtTodoStyles = makeStyles({
         "--task-complete-background-color": tokens.colorNeutralForeground2,        
         "--task-background-color-hover":  tokens.colorNeutralBackground4,
         "--task-box-shadow": "none" ,
-        "--task-radio-background-color": "green",
+        "--task-radio-background-color": tokens.colorBrandForeground1
     }
 });

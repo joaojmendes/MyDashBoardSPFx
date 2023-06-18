@@ -9,6 +9,11 @@ import {
   MgtTemplateProps,
 } from '@microsoft/mgt-react/dist/es6/MgtTemplateProps';
 
+import {
+  HEIGHT_ON_SPSITE,
+  HEIGHT_ON_TEAMS,
+} from '../../constants/constants';
+import { useUtils } from '../../hooks/useUtils';
 import { RenderItemTemplate } from './RenderItemTemplate';
 import { RenderNoDataTemplate } from './RenderNoDataTemplate';
 import { useItemStyles } from './useItemStyles';
@@ -17,6 +22,7 @@ export interface INewsProps {}
 
 export const News: React.FunctionComponent<INewsProps> = (props: React.PropsWithChildren<INewsProps>) => {
   const styles = useItemStyles();
+  const {isInTeams} = useUtils();
 
   const ListItemTemplate = React.useCallback((props: MgtTemplateProps): JSX.Element => {
     return <RenderItemTemplate dataContext={props.dataContext} />;
@@ -32,7 +38,7 @@ export const News: React.FunctionComponent<INewsProps> = (props: React.PropsWith
 
   return (
     <>
-      <div className={styles.centerContainer}>
+      <div className={styles.centerContainer} style={{height: isInTeams ? HEIGHT_ON_TEAMS : HEIGHT_ON_SPSITE}}>
         <SearchResults
           size={10}
           pagingMax={0}

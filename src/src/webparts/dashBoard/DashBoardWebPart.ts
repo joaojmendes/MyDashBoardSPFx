@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 
 import * as strings from 'DashBoardWebPartStrings';
+import { Theme } from 'office-ui-fabric-react';
 
 import {
   Providers,
@@ -23,12 +24,12 @@ import { IDashBoardProps } from '../../components/IDashBoardProps';
 import { getSP } from '../../pnpjs/pnpjsConfig';
 
 export interface IDashBoardWebPartProps {
-  description: string;
+  title: string;
 }
 
 export default class DashBoardWebPart extends BaseClientSideWebPart<IDashBoardWebPartProps> {
   private _isDarkTheme: boolean = false;
-
+  private _theme: Theme | undefined;
   private _themeString: string = "";
 
   private _applyTheme = (theme: string): void => {
@@ -55,6 +56,8 @@ export default class DashBoardWebPart extends BaseClientSideWebPart<IDashBoardWe
       themeString: this._themeString ?? "default",
       hasTeamsContext: !!this.context.sdks.microsoftTeams,
       context: this.context as BaseComponentContext,
+      theme: this._theme,
+      title: this.properties.title,
     });
 
     ReactDom.render(element, this.domElement);
@@ -80,6 +83,7 @@ export default class DashBoardWebPart extends BaseClientSideWebPart<IDashBoardWe
     if (!currentTheme) {
       return;
     }
+    this._theme = currentTheme as Theme;
     this._isDarkTheme = !!currentTheme.isInverted;
   }
 
@@ -102,8 +106,9 @@ export default class DashBoardWebPart extends BaseClientSideWebPart<IDashBoardWe
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField("description", {
+                PropertyPaneTextField("title", {
                   label: strings.DescriptionFieldLabel,
+                  value: this.properties.title,
                 }),
               ],
             },

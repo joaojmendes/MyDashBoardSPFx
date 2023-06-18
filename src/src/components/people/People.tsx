@@ -18,9 +18,11 @@ export interface IPeopleProps {}
 
 export const People: React.FunctionComponent<IPeopleProps> = (props: React.PropsWithChildren<IPeopleProps>) => {
   const [selectedValue, setSelectedValue] = React.useState<string>("tab1");
+  
   const styles = usePeopleStyles();
   const RevelantIcon = bundleIcon(People24Filled, People24Regular);
-  /* const RecentPeople= bundleIcon(PeopleTeamAdd24Filled, PeopleTeamAdd24Regular); */
+ 
+ 
 
   const onTabSelect = React.useCallback((tabId: string) => {
     setSelectedValue(tabId);

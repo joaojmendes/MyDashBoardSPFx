@@ -1,5 +1,11 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 
+import * as React from 'react';
+
+import { useAtom } from 'jotai';
+
+import { appStateAtom } from '../atoms/appStateAtom';
+
 export const DOCICONURL_XLSX = "https://static2.sharepointonline.com/files/fabric/assets/item-types/96/xlsx.png";
 export const DOCICONURL_DOCX = "https://static2.sharepointonline.com/files/fabric/assets/item-types/96/docx.png";
 export const DOCICONURL_PPTX = "https://static2.sharepointonline.com/files/fabric/assets/item-types/96/pptx.png";
@@ -26,6 +32,13 @@ export const DOCICONURL_AUDIO = "https://static2.sharepointonline.com/files/fabr
 export const DOCICONURL_FOLDER = "https://static2.sharepointonline.com/files/fabric/assets/item-types/96/folder.png";
 
 export const useUtils = () => {
+
+  const [appGlobalState] = useAtom(appStateAtom);
+  const {hasTeamsContext} = appGlobalState;
+
+  const isInTeams = React.useMemo(() => {
+    return hasTeamsContext;
+  }, [hasTeamsContext]);
   /**
    * GetFileImageUrl
    */
@@ -187,5 +200,5 @@ export const useUtils = () => {
 
 
   
-  return { GetFileImageUrl, getShortName, isOndrive, formatFileSize, getFolderIcon,trimBeginDoubleSlash };
+  return {isInTeams, GetFileImageUrl, getShortName, isOndrive, formatFileSize, getFolderIcon,trimBeginDoubleSlash };
 };

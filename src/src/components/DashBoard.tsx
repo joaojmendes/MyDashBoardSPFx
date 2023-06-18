@@ -7,19 +7,20 @@ import {
   teamsDarkTheme,
   teamsHighContrastTheme,
   teamsLightTheme,
+  Theme,
   tokens,
 } from '@fluentui/react-components';
 
+import { createv9Theme } from '../utils/v9ThemeShim';
 import { DashboardControl } from './dashBoardControl/DashboardControl';
 import { IDashBoardProps } from './IDashBoardProps';
 
 export const Dashboard: React.FunctionComponent<IDashBoardProps > = (props: React.PropsWithChildren<IDashBoardProps >) => {
-  const { themeString ,   } = props;
-  return (
-    <>
-      <FluentProvider
-        theme={
-          themeString === "dark"
+  const { themeString , theme, hasTeamsContext  } = props;
+
+  const setTheme = React.useCallback(():Partial<Theme>  => {
+      if (hasTeamsContext){
+       return  themeString === "dark"
             ? teamsDarkTheme
             : themeString === "contrast"
             ? teamsHighContrastTheme
@@ -27,6 +28,17 @@ export const Dashboard: React.FunctionComponent<IDashBoardProps > = (props: Reac
                 ...teamsLightTheme,
                 colorNeutralBackground3: "#eeeeee",
               }
+      } else {
+           return  createv9Theme(theme)
+        }
+    
+  }, [themeString, theme, hasTeamsContext, createv9Theme]);
+
+  return (
+    <>
+      <FluentProvider
+        theme={
+          setTheme()
         }
         style={{ background: tokens.colorNeutralBackground3 }}
       >

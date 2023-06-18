@@ -7,7 +7,7 @@ import {
 export const usePeopleStyles = makeStyles({
   peopleContainer: {
     width: "100%",
-    height: "calc(100vh - 250px)",
+ /*    height: "calc(100vh - 320px)",  */
     display: "flex",
     flexDirection: "column",
     justifyContent: "start",
@@ -28,7 +28,7 @@ export const usePeopleStyles = makeStyles({
     paddingLeft: "10px",
     paddingRight: "10px",
     paddingBottom: "20px",
-    height: "calc(100vh - 200px)",
+   /*  height: "calc(100vh - 150px)", */
     overflowY: "auto",
     justifyContent: "start",
     "::-webkit-scrollbar-thumb": {

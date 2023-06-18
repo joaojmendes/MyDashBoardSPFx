@@ -110,7 +110,7 @@ export const useMyFilesStyles = makeStyles({
     paddingBottom: "20px",
     width: "100%",
     overflowY: "auto",
-    height: "calc(100vh - 200px)",
+ /*    height: "calc(100vh - 320px)", */
     justifyContent: "start",
     "::-webkit-scrollbar-thumb": {
       ...shorthands.borderRadius("10px"),

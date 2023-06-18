@@ -22,7 +22,7 @@
     "description": { "default": "My Dashboard" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "description": "My Dashboard"
+      "title": "My Dashboard"
     }
   }]
 }

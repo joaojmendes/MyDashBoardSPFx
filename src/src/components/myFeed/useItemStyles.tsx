@@ -22,7 +22,7 @@ export const useItemStyles = makeStyles({
     backgroundColor: tokens.colorNeutralStroke3,
     width: "100%",
     overflowY: "auto",
-    height: "calc(100vh - 200px)",
+  /*  height: "calc(100vh - 320px)",   */ 
     justifyContent: "center",
     textAlign: "center",
     "::-webkit-scrollbar-thumb": {

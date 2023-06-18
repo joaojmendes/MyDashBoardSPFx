@@ -9,29 +9,27 @@ export const useContainerStyles = makeStyles({
     marginTop: "0px",
     backgroundColor: tokens.colorNeutralBackground3,
     position: "absolute",
- 
-    height: "calc(100vh - 50px)",
   },
   grid: {
     ...shorthands.padding("0px 10px 10px 0px"),
-    height: "100%",
+
     backgroundColor: tokens.colorNeutralBackground1,
     display: "grid",
     gridTemplateColumns: "1fr 3fr 1fr",
     gridTemplateAreas: `"left center right"`,
     gridTemplateRows: "1fr",
     columnGap: "10px",
-    ...shorthands.overflow("hidden"), 
-    overflowY: "auto", 
-    '@media only screen and (max-width: 1024px)': { 
-      gridTemplateColumns:  "1fr",
-      gridTemplateAreas: `"left" "center" "right"`, 
-    }, 
+    ...shorthands.overflow("hidden"),
+    overflowY: "auto",
+    "@media only screen and (max-width: 1024px)": {
+      gridTemplateColumns: "1fr",
+      gridTemplateAreas: `"left" "center" "right"`,
+    },
   },
   wrapper: {
     ...shorthands.padding("10px"),
   },
-  
+
   tab: {
     alignItems: "flex-start",
     display: "flex",

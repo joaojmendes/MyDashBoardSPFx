@@ -14,7 +14,5 @@ export const useLeftStyles = makeStyles({
     ...shorthands.gridArea("left"),
     paddingLeft: "15px",
     paddingRight: "30px",
-    
-   
   },
 });
