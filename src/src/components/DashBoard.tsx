@@ -11,7 +11,7 @@ import {
   tokens,
 } from '@fluentui/react-components';
 
-import { createv9Theme } from '../utils/v9ThemeShim';
+import { createv9Theme } from '../utils/V8toV9ThemeShim/v9ThemeShim';
 import { DashboardControl } from './dashBoardControl/DashboardControl';
 import { IDashBoardProps } from './IDashBoardProps';
 

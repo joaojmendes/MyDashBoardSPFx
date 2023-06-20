@@ -8,6 +8,7 @@ import {
   Providers,
   SharePointProvider,
 } from '@microsoft/mgt';
+import { applyTheme } from '@microsoft/mgt-react';
 import {
   BaseComponentContext,
   IReadonlyTheme,
@@ -38,10 +39,12 @@ export default class DashBoardWebPart extends BaseClientSideWebPart<IDashBoardWe
 
     if (theme === "dark") {
       this._themeString = "dark";
+       applyTheme( "dark");
     }
 
     if (theme === "default") {
       this._themeString = "default";
+        applyTheme( "light");
     }
 
     if (theme === "contrast") {
