@@ -24,10 +24,9 @@ export const usePnPjs = () => {
   const getCommentsAndLikesForPage = useCallback(
     async (pageUrl: string, listId: string, itemId: string): Promise<ICommentsAndLikes> => {
       try {
-       // const webUrl = pageUrl.split("/SitePages")[0];
-        // console.log("webUrl2",webUrl2);
-          const webUrl: string = await sp.site.getWebUrlFromPageUrl(encodeURI(pageUrl));
-        console.log("webUrl", webUrl);
+     const webUrl = pageUrl.split("/SitePages")[0]; 
+      // bug error when title has "'" character disbale PnPJs getWebUrlFromPageUrl
+     /*     const webUrl: string = await sp.site.getWebUrlFromPageUrl(encodeURI(pageUrl));   */
         const spWebNews = Web([sp.web, webUrl]);
         const list = spWebNews.lists.getById(listId);
 

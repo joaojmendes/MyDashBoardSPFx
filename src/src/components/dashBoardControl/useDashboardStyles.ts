@@ -4,7 +4,7 @@ import {
   tokens,
 } from '@fluentui/react-components';
 
-export const useContainerStyles = makeStyles({
+export const useDashboardStyles = makeStyles({
   root: {
     marginTop: "0px",
     backgroundColor: tokens.colorNeutralBackground3,
@@ -37,5 +37,15 @@ export const useContainerStyles = makeStyles({
     justifyContent: "flex-start",
     ...shorthands.padding("50px", "20px"),
     rowGap: "20px",
+  },
+
+  titleStyles : {
+    display: "flex",
+            justifyContent: "center",
+            alignContent: "center",
+            width: "100%",
+            ...shorthands.padding("15px"),           
+            backgroundColor: "white",
+            marginBottom: "1px",
   },
 });

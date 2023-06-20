@@ -16,6 +16,7 @@ declare interface IDashBoardWebPartStrings {
   NoData:string;
   Relevant:string;
   NoPeople:string;
+  MyDashboard:string;
 }
 
 declare module 'DashBoardWebPartStrings' {

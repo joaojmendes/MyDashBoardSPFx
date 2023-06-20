@@ -17,5 +17,6 @@ define([], function() {
     "NoData":"No Data to show",
     "Relevant":"Relevant",
     "NoPeople":"No People to show",
+    "MyDashboard":"My Dashboard",
   }
 });
