@@ -22,6 +22,7 @@ import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 
 import { Dashboard } from '../../components/DashBoard';
 import { IDashBoardProps } from '../../components/IDashBoardProps';
+import { EAppHostName } from '../../models/EAppHostName';
 import { getSP } from '../../pnpjs/pnpjsConfig';
 
 export interface IDashBoardWebPartProps {
@@ -32,6 +33,7 @@ export default class DashBoardWebPart extends BaseClientSideWebPart<IDashBoardWe
   private _isDarkTheme: boolean = false;
   private _theme: Theme | undefined;
   private _themeString: string = "";
+  private _appHostName: EAppHostName = EAppHostName.SharePoint;
 
   private _applyTheme = (theme: string): void => {
     this.context.domElement.setAttribute("data-theme", theme);
@@ -39,12 +41,12 @@ export default class DashBoardWebPart extends BaseClientSideWebPart<IDashBoardWe
 
     if (theme === "dark") {
       this._themeString = "dark";
-       applyTheme( "dark");
+      applyTheme("dark");
     }
 
     if (theme === "default") {
       this._themeString = "default";
-        applyTheme( "light");
+      applyTheme("light");
     }
 
     if (theme === "contrast") {
@@ -60,7 +62,8 @@ export default class DashBoardWebPart extends BaseClientSideWebPart<IDashBoardWe
       hasTeamsContext: !!this.context.sdks.microsoftTeams,
       context: this.context as BaseComponentContext,
       theme: this._theme,
-      title: this.properties.title,
+      title: this.properties.title ?? strings.MyDashboard,
+      appHostName: this._appHostName,
     });
 
     ReactDom.render(element, this.domElement);
@@ -73,7 +76,19 @@ export default class DashBoardWebPart extends BaseClientSideWebPart<IDashBoardWe
     if (this.context.sdks.microsoftTeams) {
       // in teams ?
       const teamsContext = await this.context.sdks.microsoftTeams?.teamsJs.app.getContext();
-
+      switch (teamsContext.app.host.name.toLowerCase()) {
+        case "teams":
+          this._appHostName = EAppHostName.Teams;
+          break;
+        case "office":
+          this._appHostName = EAppHostName.Office;
+          break;
+        case "outlook":
+          this._appHostName = EAppHostName.Outlook;
+          break;
+        default:
+          throw new Error("[DashBoardWebPart._onInit]: Unknown app host name");
+      }
       this._applyTheme(teamsContext.app.theme || "default");
       this.context.sdks.microsoftTeams.teamsJs.app.registerOnThemeChangeHandler(this._applyTheme);
     }
@@ -111,7 +126,7 @@ export default class DashBoardWebPart extends BaseClientSideWebPart<IDashBoardWe
               groupFields: [
                 PropertyPaneTextField("title", {
                   label: strings.DescriptionFieldLabel,
-                  value: this.properties.title,
+                  value: this.properties.title ?? strings.MyDashboard,
                 }),
               ],
             },
