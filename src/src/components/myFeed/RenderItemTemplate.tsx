@@ -25,7 +25,6 @@ import {
   Person,
 } from '@microsoft/mgt-react/dist/es6/spfx';
 
-import { useImageUtils } from '../../hooks/useImageUtils';
 import { RenderCardFooter } from './RenderCardFooter';
 import { useItemStyles } from './useItemStyles';
 
@@ -37,18 +36,10 @@ export const RenderItemTemplate: React.FunctionComponent<IListItemTemplateProps>
   props: React.PropsWithChildren<IListItemTemplateProps>
 ) => {
   const { resource } = props.dataContext;
-  const { fields, lastModifiedBy, lastModifiedDateTime, webUrl } = resource;
-  const { title, description, bannerImageUrlOWSURLH, siteTitle } = fields;
+  const { fields, lastModifiedBy, lastModifiedDateTime, webUrl, thumbnail } = resource;
+  const { title, description, siteTitle } = fields;
   const styles = useItemStyles();
-  const { getPictureThumbnailUrl } = useImageUtils();
-  const [imageUrl, setImageUrl] = React.useState<string>("");
-
-  React.useEffect(() => {
-    (async () => {
-      const url = await getPictureThumbnailUrl(bannerImageUrlOWSURLH.split(",")[0]);
-      setImageUrl(url);
-    })();
-  }, [imageUrl]);
+  const [imageUrl] = React.useState<string>(thumbnail?.url);
 
   const localeDate = React.useMemo(() => {
     return format(parseISO(lastModifiedDateTime), "PPP");
@@ -86,13 +77,11 @@ export const RenderItemTemplate: React.FunctionComponent<IListItemTemplateProps>
             </Person>
           </div>
         </header>
-
         <div className={styles.badgeContainer}>
           <Badge color="brand" shape="rounded" appearance="tint">
             {siteTitle}
           </Badge>
         </div>
-
         <Image fit="cover" src={imageUrl} style={{ height: 100 }} />
         <Link appearance="subtle" href={webUrl} target="_blank">
           <Body1Strong className={styles.cardTextSubject} title={title}>

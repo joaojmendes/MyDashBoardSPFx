@@ -44,9 +44,10 @@ export const News: React.FunctionComponent<INewsProps> = (props: React.PropsWith
           pagingMax={0}
           queryString={`PromotedSTate:2 AND contentclass:STS_ListItem_WebPageLibrary AND
                        (FirstPublishedDate > 1970-01-01 AND FirstPublishedDate < ${new Date().toISOString()})`}
-          fetchThumbnail
+          fetchThumbnail={true}
           entityTypes={["listItem"]}
           fields={[
+            "id",
             "ListItemID",
             "FirstPublishedDate",
             "description",
