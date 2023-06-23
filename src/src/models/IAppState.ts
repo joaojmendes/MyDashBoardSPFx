@@ -1,3 +1,3 @@
-import { IDashBoardProps } from '../components/IDashBoardProps';
+import { IDashBoardProps } from '../webparts/dashBoard/IDashBoardProps';
 
 export interface IAppState  extends IDashBoardProps{}

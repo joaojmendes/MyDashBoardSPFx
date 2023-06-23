@@ -8,8 +8,8 @@ import { Subtitle1 } from '@fluentui/react-components';
 
 import { appStateAtom } from '../../atoms/appStateAtom';
 import { useUtils } from '../../hooks/useUtils';
+import { IDashBoardProps } from '../../webparts/dashBoard/IDashBoardProps';
 import { Center } from '../center/Center';
-import { IDashBoardProps } from '../IDashBoardProps';
 import { Left } from '../left/Left';
 import { MyDay } from '../myDay/MyDay';
 import { MyFeed } from '../myFeed/MyFeed';

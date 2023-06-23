@@ -1,7 +1,7 @@
 import { Theme } from '@fluentui/react';
 import { BaseComponentContext } from '@microsoft/sp-component-base';
 
-import { EAppHostName } from '../models/EAppHostName';
+import { EAppHostName } from '../../models/EAppHostName';
 
 export interface IDashBoardProps {
   isDarkTheme: boolean;

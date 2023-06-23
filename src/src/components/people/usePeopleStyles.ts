@@ -6,8 +6,6 @@ import {
 
 export const usePeopleStyles = makeStyles({
   peopleContainer: {
-    width: "100%",
- /*    height: "calc(100vh - 320px)",  */
     display: "flex",
     flexDirection: "column",
     justifyContent: "start",

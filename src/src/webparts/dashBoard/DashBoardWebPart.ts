@@ -20,10 +20,10 @@ import {
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 
-import { Dashboard } from '../../components/DashBoard';
-import { IDashBoardProps } from '../../components/IDashBoardProps';
 import { EAppHostName } from '../../models/EAppHostName';
 import { getSP } from '../../pnpjs/pnpjsConfig';
+import { Dashboard } from './DashBoard';
+import { IDashBoardProps } from './IDashBoardProps';
 
 export interface IDashBoardWebPartProps {
   title: string;

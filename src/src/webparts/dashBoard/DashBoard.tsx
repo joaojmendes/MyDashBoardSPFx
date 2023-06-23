@@ -11,8 +11,10 @@ import {
   tokens,
 } from '@fluentui/react-components';
 
-import { createv9Theme } from '../utils/V8toV9ThemeShim/v9ThemeShim';
-import { DashboardControl } from './dashBoardControl/DashboardControl';
+import {
+  DashboardControl,
+} from '../../components/dashBoardControl/DashboardControl';
+import { createv9Theme } from '../../utils/V8toV9ThemeShim/v9ThemeShim';
 import { IDashBoardProps } from './IDashBoardProps';
 
 export const Dashboard: React.FunctionComponent<IDashBoardProps > = (props: React.PropsWithChildren<IDashBoardProps >) => {
