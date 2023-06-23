@@ -115,6 +115,8 @@ export const useItemStyles = makeStyles({
     flexDirection: "column",
     justifyContent: "start",
     textAlign: "start",
+    width: "40px",
+    height: "40px",
   },
   menu: {
     backgroundColor: tokens.colorNeutralBackground1,

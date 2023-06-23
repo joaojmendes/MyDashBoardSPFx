@@ -40,6 +40,8 @@ export const PeopleCard: React.FunctionComponent<IPeopleCardProps> = (
     <>
       <Card className={styles.card} size="large" appearance="outline">
         <div className={styles.personContainer}>
+          
+          <div style={{ width: 56, height: 56 }}>  {/* bug with person card on Teams App mobile  need to specify with and heigt*/}
           <Person
             personQuery={user.userPrincipalName}
             showPresence
@@ -47,6 +49,7 @@ export const PeopleCard: React.FunctionComponent<IPeopleCardProps> = (
             avatarSize="large"
             personCardInteraction={PersonCardInteraction.hover}
           />
+          </div>
 
           <div className={styles.personInfoContainer}>
             <div className={styles.cardTextSubject}>

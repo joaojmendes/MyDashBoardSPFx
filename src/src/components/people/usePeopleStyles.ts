@@ -93,6 +93,7 @@ export const usePeopleStyles = makeStyles({
     ...shorthands.padding("10px"),
     ...shorthands.gap("10px"),
     backgroundColor: tokens.colorNeutralBackground2,
+     
   },
   personInfoContainer: {
     display: "flex",

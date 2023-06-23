@@ -65,6 +65,7 @@ export const RenderItemTemplate: React.FunctionComponent<IListItemTemplateProps>
       <Card className={styles.card} size="large">
         <header className={styles.cardHeader}>
           <div className={styles.personContainer}>
+          
             <Person
               personQuery={lastModifiedBy.user.email}
               showPresence

@@ -71,10 +71,12 @@ export const RenderFileCard: React.FunctionComponent<IRenderFileCardProps> = (
     <>
       <Card className={styles.card} size="large" appearance="subtle">
         <header className={styles.cardHeader}>
+          <div className={styles.personContainer}>
           <Person personQuery={user.email} showPresence view={4} avatarSize="small">
             <PersonTemplateLine1 template="line1" />
             <PersonTemplateLine2 template="line2" />
           </Person>
+          </div>
         </header>
         <Card style={{ padding: "5px 10px", maxWidth: "100%" }} size="large">
           <CardHeader

@@ -149,6 +149,13 @@ export const useMyFilesStyles = makeStyles({
     maxWidth: "100%",
     width: "100%",
     height: "fit-content",
-  }
-
+  },
+  personContainer: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "start",
+    textAlign: "start",
+    width: "40px",
+    height: "40px",
+  },
 });

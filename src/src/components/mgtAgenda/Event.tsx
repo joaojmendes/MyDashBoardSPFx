@@ -106,7 +106,7 @@ export const Event: React.FunctionComponent<IEventProps> = (props: React.PropsWi
               {subject}
             </Caption1Strong>
           </Link>
-          {
+          <div style={{ width: 40, height: 40 }}> {/* bug with person card on Teams App mobile  need to specify with and heigt*/}
             <Person
               personQuery={address}
               showPresence
@@ -117,7 +117,7 @@ export const Event: React.FunctionComponent<IEventProps> = (props: React.PropsWi
               <PersonTemplateLine1 template="line1" />
               <PersonTemplateLine2 template="line2" />
             </Person>
-          }
+          </div>
         </div>
       </Card>
     </>
