@@ -36,28 +36,32 @@ export const Event: React.FunctionComponent<IEventProps> = (props: React.PropsWi
   const { event } = props;
   const eventStyles = useEventStyles();
   const { end, start, subject, organizer, webLink, importance } = event;
-   
+
   const { emailAddress } = organizer;
   const { name, address } = emailAddress || {};
   const { dateTime: endDate } = end;
   const { dateTime: startDate } = start;
 
-  const convertedStartDate = React.useMemo(() => event.start.timeZone === 'UTC' ?   `${startDate}Z` : startDate , [startDate,event.start.timeZone]);
-  const convertedEndDate = React.useMemo(() => event.end.timeZone === 'UTC' ? `${endDate}Z` : endDate, [endDate, event.end.timeZone]);
-  const startHour = React.useMemo(() => format(parseISO(convertedStartDate) ,"hh:mm aaa" ) , [convertedStartDate]); 
-  const endHour = React.useMemo(()=> format(parseISO(convertedEndDate) , "hh:mm aaa"), [convertedEndDate]);
-
+  const convertedStartDate = React.useMemo(() => (event.start.timeZone === "UTC" ? `${startDate}Z` : startDate), [
+    startDate,
+    event.start.timeZone,
+  ]);
+  const convertedEndDate = React.useMemo(() => (event.end.timeZone === "UTC" ? `${endDate}Z` : endDate), [
+    endDate,
+    event.end.timeZone,
+  ]);
+  const startHour = React.useMemo(() => format(parseISO(convertedStartDate), "hh:mm aaa"), [convertedStartDate]);
+  const endHour = React.useMemo(() => format(parseISO(convertedEndDate), "hh:mm aaa"), [convertedEndDate]);
 
   const startDateString = React.useMemo(() => {
     return format(parseISO(convertedStartDate), "PPpp");
   }, [convertedStartDate]);
 
   const isToday = React.useMemo((): boolean => {
-    return isSameDay( parseISO(convertedStartDate), new Date());
+    return isSameDay(parseISO(convertedStartDate), new Date());
   }, [convertedStartDate]);
 
   const renderDate = React.useMemo(() => {
-   
     if (isToday) {
       return `${startHour} - ${endHour}`;
     }
@@ -74,15 +78,17 @@ export const Event: React.FunctionComponent<IEventProps> = (props: React.PropsWi
   }, []);
 
   const importanceBadgeColor = React.useMemo(() => {
-    if (importance === "low") {
-      return "informative";
-    } else if (importance === "normal") {
-      return "brand";
-    } else if (importance === "high") {
-      return "danger";
+    switch (importance) {
+      case "low":
+        return "informative";
+      case "normal":
+        return "brand";
+      case "high":
+        return "danger";
+      default:
+        return "informative";
     }
   }, [importance]);
-
 
   if (!event) return null;
   return (
