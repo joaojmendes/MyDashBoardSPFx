@@ -74,17 +74,18 @@ export const RenderItemTemplate: React.FunctionComponent<IListItemTemplateProps>
       <Card className={styles.card} size="large">
         <header className={styles.cardHeader}>
           <div className={styles.personContainer}>
-          
-            <Person
-              personQuery={lastModifiedBy.user.email}
-              showPresence
-              view={4}
-              avatarSize="small"
-              personCardInteraction={PersonCardInteraction.hover}
-            >
-              <PersonTemplateLine1 template="line1" />
-              <PersonTemplateLine2 template="line2" />
-            </Person>
+            <div style={{ width: 40, height: 40 }}> {/* bug with person card on Teams App mobile  need to specify with and heigt*/}
+              <Person
+                personQuery={lastModifiedBy.user.email}
+                showPresence
+                view={4}
+                avatarSize="small"
+                personCardInteraction={PersonCardInteraction.hover}
+              >
+                <PersonTemplateLine1 template="line1" />
+                <PersonTemplateLine2 template="line2" />
+              </Person>
+            </div>
           </div>
         </header>
 

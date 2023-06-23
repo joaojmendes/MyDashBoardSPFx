@@ -5,6 +5,12 @@ import * as React from 'react';
 import { useAtom } from 'jotai';
 
 import { appStateAtom } from '../atoms/appStateAtom';
+import {
+  HEIGHT_ON_OFFICE,
+  HEIGHT_ON_SPSITE,
+  HEIGHT_ON_TEAMS,
+} from '../constants/constants';
+import { EAppHostName } from '../models/EAppHostName';
 
 export const DOCICONURL_XLSX = "https://static2.sharepointonline.com/files/fabric/assets/item-types/96/xlsx.png";
 export const DOCICONURL_DOCX = "https://static2.sharepointonline.com/files/fabric/assets/item-types/96/docx.png";
@@ -34,11 +40,18 @@ export const DOCICONURL_FOLDER = "https://static2.sharepointonline.com/files/fab
 export const useUtils = () => {
 
   const [appGlobalState] = useAtom(appStateAtom);
-  const {hasTeamsContext} = appGlobalState;
+  const {hasTeamsContext, appHostName} = appGlobalState;
 
   const isInTeams = React.useMemo(() => {
     return hasTeamsContext;
   }, [hasTeamsContext]);
+
+  const getContainerHeight = React.useCallback( () => {
+    if (isInTeams) {
+     return  appHostName === EAppHostName.Office ?  HEIGHT_ON_OFFICE : HEIGHT_ON_TEAMS
+    }
+      return  HEIGHT_ON_SPSITE
+  }, [isInTeams]);
   /**
    * GetFileImageUrl
    */
@@ -200,5 +213,5 @@ export const useUtils = () => {
 
 
   
-  return {isInTeams, GetFileImageUrl, getShortName, isOndrive, formatFileSize, getFolderIcon,trimBeginDoubleSlash };
+  return {isInTeams,getContainerHeight, GetFileImageUrl, getShortName, isOndrive, formatFileSize, getFolderIcon,trimBeginDoubleSlash };
 };
