@@ -9,10 +9,11 @@ export const useDashboardStyles = makeStyles({
     marginTop: "0px",
     backgroundColor: tokens.colorNeutralBackground3,
     position: "absolute",
+    width: "100%",
   },
   grid: {
     ...shorthands.padding("0px 10px 10px 0px"),
-
+    width: "100%",
     backgroundColor: tokens.colorNeutralBackground1,
     display: "grid",
     gridTemplateColumns: "1fr 3fr 1fr",
