@@ -12,7 +12,6 @@ export const useMgtAgendaStyles = makeStyles({
     maxWidth: "100%",
     overflowY: "auto",
     overflowX: "hidden",
- /*   height: "calc(100vh - 320px)",    */
     justifyContent: "start",
 
     
