@@ -17,7 +17,6 @@ export const useMgtTodoStyles = makeStyles({
         position: "relative",
         width: "100%",
         overflowY: "auto",
-      /*   height: "calc(100vh - 160px)", */
         justifyContent: "start",
         textAlign: "center",
         "::-webkit-scrollbar-thumb": {

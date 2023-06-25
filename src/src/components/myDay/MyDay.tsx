@@ -29,7 +29,7 @@ export const MyDay: React.FunctionComponent<IMyDayProps> = (props: React.PropsWi
     setSelectedValue(tabId);
   }, []);
 
-  const tabs: ITab[] = [
+  const tabs: ITab[] = React.useMemo(() => [
     {
       id: "tab1",
       name: strings.Agenda,
@@ -40,7 +40,7 @@ export const MyDay: React.FunctionComponent<IMyDayProps> = (props: React.PropsWi
       name: strings.Todo,
       icon: <TasksApp />,
     },
-  ];
+  ], []);
 
   const renderSelectedTab = React.useCallback(() => {
     switch (selectedValue) {

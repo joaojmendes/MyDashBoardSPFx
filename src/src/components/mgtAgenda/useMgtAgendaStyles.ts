@@ -13,8 +13,6 @@ export const useMgtAgendaStyles = makeStyles({
     overflowY: "auto",
     overflowX: "hidden",
     justifyContent: "start",
-
-    
     "::-webkit-scrollbar-thumb": {
       ...shorthands.borderRadius("10px"),
       backgroundColor:  tokens.colorNeutralStroke1,
@@ -26,9 +24,10 @@ export const useMgtAgendaStyles = makeStyles({
     },
     "scrollbar-width": "thin",
     "@media only screen and (max-width: 1024px)": {
-      height: "600px",
-    },
-  
+      width: "100%",
+      maxHeight: "600px !important",
+      height: "fit-content !important",
+    }, 
   },
   spinnerStyles: {
     display: "flex",
